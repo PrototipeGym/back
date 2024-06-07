@@ -13,13 +13,39 @@ export class User {
   }
 
   @Column()
-  firstName: string;
+  nombre: string;
 
   @Column()
-  lastName: string;
+  apellido: string;
 
+  @Column()
+  dni: string;
 
+  @Column()
+  edad: string;
+
+  @Column()
+  peso: string;
+
+  @Column()
+  altura: string;
+
+  @Column()
+  telefono: string;
+
+  @Column()
+  usuario: string;
+
+  @Column()
+  contrasena: string;
+
+  // @Column()
+  // id_Rol: string;
+
+  // @Column()
+  // id_PlanServicio: string;
   
+
   @Column({ default: true })
   isActive: boolean;
 

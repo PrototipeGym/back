@@ -18,7 +18,7 @@ export class UsersService {
   }
 
   async findAll() {
-    return await this.userRepository.find({select:["id", "lastName", "firstName" ], where:{"isActive" : true}});
+    return await this.userRepository.find({select:["id", "nombre", "apellido", "telefono" ], where:{"isActive" : true}});
   }
   
 
@@ -36,8 +36,16 @@ export class UsersService {
     }
   
     const user = users[0];
-    user.firstName = updateUserDto.firstName;
-    user.lastName = updateUserDto.lastName;
+    user.nombre = updateUserDto.nombre;
+    user.apellido = updateUserDto.apellido;
+    user.dni=updateUserDto.dni;
+    user.edad=updateUserDto.edad;
+    user.peso=updateUserDto.peso;
+    user.altura=updateUserDto.altura;
+    user.telefono=updateUserDto.telefono;
+    user.usuario=updateUserDto.usuario;
+    user.contrasena=updateUserDto.contrasena;
+
   
     return await this.userRepository.save(user);
   }

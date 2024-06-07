@@ -10,14 +10,66 @@ export class CreateUserDto {
     @IsString()
     @MinLength(1)
     @MaxLength(50)
-    firstName : string;
+    @Transform(({value})=>value.trim())
+    nombre : string;
 
     @ApiProperty()
     @IsString()
     @MinLength(1)
     @MaxLength(50)
     @Transform(({value})=>value.trim())
-    lastName : string;
+    apellido : string;
+
+    @ApiProperty()
+    @IsString()
+    @MinLength(1)
+    @MaxLength(8)
+    @Transform(({value})=>value.trim())
+    dni : string;
+
+
+    @ApiProperty()
+    @IsString()
+    @MinLength(1)
+    @MaxLength(8)
+    @Transform(({value})=>value.trim())
+    edad : string;
+
+    @ApiProperty()
+    @IsString()
+    @MinLength(1)
+    @MaxLength(8)
+    @Transform(({value})=>value.trim())
+    peso : string;
+
+    @ApiProperty()
+    @IsString()
+    @MinLength(1)
+    @MaxLength(8)
+    @Transform(({value})=>value.trim())
+    altura : string;
+
+    @ApiProperty()
+    @IsString()
+    @MinLength(1)
+    @MaxLength(8)
+    @Transform(({value})=>value.trim())
+    telefono : string;
+
+    @ApiProperty()
+    @IsString()
+    @MinLength(1)
+    @MaxLength(8)
+    @Transform(({value})=>value.trim())
+    usuario : string;
+
+    @ApiProperty()
+    @IsString()
+    @MinLength(1)
+    @MaxLength(8)
+    @Transform(({value})=>value.trim())
+    contrasena : string;
+
 
 }
 
