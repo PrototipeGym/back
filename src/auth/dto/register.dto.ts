@@ -1,26 +1,22 @@
-import { ApiProperty } from "@nestjs/swagger";
 import { Transform } from "class-transformer";
 import { IsString, MaxLength, MinLength } from "class-validator";
+import { Plan } from "src/plan/entities/plan.entity";
+import { ManyToMany } from "typeorm";
 
+export class RegisterDto{
 
-
-export class CreateUserDto {
-
-    @ApiProperty()
     @IsString()
     @MinLength(1)
     @MaxLength(50)
     @Transform(({value})=>value.trim())
     nombre : string;
 
-    @ApiProperty()
     @IsString()
     @MinLength(1)
     @MaxLength(50)
     @Transform(({value})=>value.trim())
     apellido : string;
 
-    @ApiProperty()
     @IsString()
     @MinLength(1)
     @MaxLength(8)
@@ -28,55 +24,49 @@ export class CreateUserDto {
     dni : string;
 
 
-    @ApiProperty()
     @IsString()
     @MinLength(1)
     @MaxLength(8)
     @Transform(({value})=>value.trim())
     edad : string;
 
-    @ApiProperty()
     @IsString()
     @MinLength(1)
     @MaxLength(8)
     @Transform(({value})=>value.trim())
     peso : string;
 
-    @ApiProperty()
     @IsString()
     @MinLength(1)
     @MaxLength(8)
     @Transform(({value})=>value.trim())
     altura : string;
 
-    @ApiProperty()
     @IsString()
     @MinLength(1)
     @MaxLength(8)
     @Transform(({value})=>value.trim())
     telefono : string;
 
-    @ApiProperty()
     @IsString()
     @MinLength(1)
     @MaxLength(8)
     @Transform(({value})=>value.trim())
     usuario : string;
 
-    @ApiProperty()
     @IsString()
     @MinLength(1)
     @MaxLength(8)
     @Transform(({value})=>value.trim())
     contrasena : string;
 
-    @ApiProperty()
     @IsString()
     @MinLength(1)
     @MaxLength(8)
     @Transform(({value})=>value.trim())
     role : string;
 
+    // @ManyToMany(() => Plan, (plan) => plan.users)
+    // plans: Plan[];
 
 }
-

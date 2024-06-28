@@ -1,5 +1,7 @@
 
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Plan } from 'src/plan/entities/plan.entity';
+import { Role } from '../../common/enums/role.enum';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToMany } from 'typeorm';
 import { v4 as uuidv4 } from 'uuid';
 
 @Entity()
@@ -36,11 +38,11 @@ export class User {
   @Column()
   usuario: string;
 
-  @Column()
+  @Column({select: false})
   contrasena: string;
 
-  // @Column()
-  // id_Rol: string;
+  @Column({type:'enum', default: Role.USER, enum: Role})
+  role: string;
 
   // @Column()
   // id_PlanServicio: string;
@@ -49,6 +51,9 @@ export class User {
   @Column({ default: true })
   isActive: boolean;
 
+
+  // @ManyToMany(() => Plan, (plan) => plan.users)
+  // plans: Plan[];
 
 
 }

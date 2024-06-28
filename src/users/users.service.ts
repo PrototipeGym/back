@@ -18,9 +18,10 @@ export class UsersService {
   }
 
   async findAll() {
-    return await this.userRepository.find({select:["id", "nombre", "apellido", "telefono" ], where:{"isActive" : true}});
+    return await this.userRepository.find({ where:{"isActive" : true}});
   }
   
+
 
   async findOne(id: string): Promise<User | undefined> {
     const users = await this.userRepository.find({ where: { id: id } });
@@ -65,5 +66,19 @@ export class UsersService {
   }
   
 
+  
+  //Metodos utilizado para el Login
+  async findOneByUsername(usuario: string): Promise<User | undefined> {
+    const users = await this.userRepository.find({ where: { usuario: usuario } });
+    return users.length > 0 ? users[0] : undefined;
+  }
+
+  
+  async findByUsernameWithPassword(usuario: string){
+    return this.userRepository.findOne({
+      where: {usuario},
+      select:['id', 'usuario', 'contrasena', 'role'],
+    });
+  }
   
 }
