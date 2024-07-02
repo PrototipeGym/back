@@ -5,6 +5,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Plan } from './entities/plan.entity';
 import { Repository } from 'typeorm';
 import { Dia } from 'src/dia/entities/dia.entity';
+import { UserActiveInterface } from 'src/common/interfaces/user-active.interface';
 
 @Injectable()
 export class PlanService {
@@ -16,18 +17,18 @@ export class PlanService {
     private diaRepository: Repository<Dia>,
   ) {}
 
-  async create(createPlanDto: CreatePlanDto) {
+  async create(createPlanDto: CreatePlanDto, user: UserActiveInterface) {
     const { dias, ...planDetails } = createPlanDto;
-
-    const plan = this.planRepository.create(planDetails);
+  
+    const plan = this.planRepository.create({ ...planDetails, userID: user.id });
     const savedPlan = await this.planRepository.save(plan);
-
+  
     const diasToSave = dias.map(dia => {
       return this.diaRepository.create({ ...dia, plan: savedPlan });
     });
-
+  
     await this.diaRepository.save(diasToSave);
-
+  
     return await this.planRepository.findOne({ where: { id: savedPlan.id }, relations: ['dias'] });
   }
 

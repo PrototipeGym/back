@@ -1,6 +1,7 @@
 
 import { Dia } from "src/dia/entities/dia.entity";
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { User } from "src/users/entities/user.entity";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { v4 as uuidv4 } from 'uuid';
 
 @Entity()
@@ -25,8 +26,12 @@ export class Plan {
     @OneToMany(() => Dia, dia => dia.plan, { eager: true }) 
     dias: Dia[];
 
+    @ManyToOne(() => User)
+    @JoinColumn({name : 'userID', referencedColumnName: 'id',})
+    user : User;
+    
+    @Column()
+    userID: string;
 
 }
-
-
 

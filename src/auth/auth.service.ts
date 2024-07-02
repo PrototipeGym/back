@@ -4,6 +4,7 @@ import { RegisterDto } from './dto/register.dto';
 import * as bcryptjs from 'bcryptjs';
 import { LoginDto } from './dto/login.dto';
 import { JwtService } from '@nestjs/jwt';
+import { jwtConstants } from './constants/jwt.constant';
 
 
 @Injectable()
@@ -66,9 +67,13 @@ export class AuthService {
           throw new UnauthorizedException("Invalid password");
         }
 
-        const payload = { usuario: user.usuario, role: user.role };
+        const payload = { id: user.id, usuario: user.usuario, role: user.role };
 
-        const token = await this.jwtService.signAsync(payload);
+        const token = await this.jwtService.signAsync(payload, {
+            secret: jwtConstants.secret,
+          });
+
+        console.log('Generated Token:', token);
         
         return {
             token: token,
@@ -76,7 +81,7 @@ export class AuthService {
         };
     }
 
-    async profile({usuario, role}: {usuario: string; role: string}){
+    async profile({usuario, role}: {id: string, usuario: string; role: string}){
         return await this.usersService.findOneByUsername(usuario);
     }
 }
