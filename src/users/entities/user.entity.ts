@@ -43,17 +43,12 @@ export class User {
 
   @Column({type:'enum', default: Role.USER, enum: Role})
   role: string;
-
-  // @Column()
-  // id_PlanServicio: string;
   
 
   @Column({ default: true })
   isActive: boolean;
 
 
-  // @ManyToMany(() => Plan, (plan) => plan.users)
-  // plans: Plan[];
 
 
 }

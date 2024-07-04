@@ -23,6 +23,9 @@ export class Plan {
     @Column({ default: true })
     delete: boolean;
 
+    @Column({ default: false })
+    blocked: boolean;
+
     @OneToMany(() => Dia, dia => dia.plan, { eager: true }) 
     dias: Dia[];
 

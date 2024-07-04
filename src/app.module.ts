@@ -11,6 +11,9 @@ import { Plan } from './plan/entities/plan.entity';
 import { DiaModule } from './dia/dia.module';
 import { Dia } from './dia/entities/dia.entity';
 import { EjercicioModule } from './ejercicio/ejercicio.module';
+import { CircuitoModule } from './circuito/circuito.module';
+import { Circuito } from './circuito/entities/circuito.entity';
+
 
 @Module({
   imports: [
@@ -27,7 +30,7 @@ import { EjercicioModule } from './ejercicio/ejercicio.module';
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DATABASE,
       autoLoadEntities: true,
-      entities: [User, Plan, Dia],
+      entities: [User, Plan, Dia, Circuito],
       synchronize: true,
       ssl: { rejectUnauthorized: false },
 
@@ -43,6 +46,9 @@ import { EjercicioModule } from './ejercicio/ejercicio.module';
     DiaModule,
 
     EjercicioModule,
+
+    CircuitoModule,
+
 
   ],
   controllers: [AppController],

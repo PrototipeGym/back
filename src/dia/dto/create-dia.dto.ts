@@ -1,6 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { Transform } from "class-transformer";
-import { IsString, MaxLength, MinLength } from "class-validator";
+import { Transform, Type } from "class-transformer";
+import { IsArray, IsString, MaxLength, MinLength, ValidateNested } from "class-validator";
+import { CreateCircuitoDto } from "src/circuito/dto/create-circuito.dto";
 
 export class CreateDiaDto {
 
@@ -10,5 +11,10 @@ export class CreateDiaDto {
     @MaxLength(50)
     @Transform(({value}) => value.trim())
     nombre : string;
+
+    @IsArray()
+    @ValidateNested({ each: true })
+    @Type(() => CreateCircuitoDto)
+    circuitos: CreateCircuitoDto[];
 
 }
