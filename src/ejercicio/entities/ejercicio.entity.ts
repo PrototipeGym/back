@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { User } from "src/users/entities/user.entity";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { v4 as uuidv4 } from 'uuid';
 
 @Entity()
@@ -14,10 +15,11 @@ export class Ejercicio {
     @Column()
     nombre: string;
 
+    @ManyToOne(() => User)
+    @JoinColumn({name : 'userID', referencedColumnName: 'id',})
+    user : User;
+    
     @Column()
-    kilos: number;
-
-    @Column({default: true})
-    precargado: boolean;
+    userID: string;
 
 }

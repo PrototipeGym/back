@@ -11,21 +11,8 @@ export class CreateEjercicioDto {
     @Transform(({value}) => value.trim() )
     nombre : string;
 
-    @ApiProperty()
-    @IsNumber()
-    @MinLength(1)
-    @MaxLength(25)
-    @Transform(({value}) => value.trim() )
-    kilos : number;
 
-    @ApiProperty()
-    @IsBoolean()
-    @MinLength(1)
-    @MaxLength(25)
-    @Transform(({value}) => value.trim() )
-    precargado : boolean;
-
-    
+ 
 
 
 }

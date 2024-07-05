@@ -13,6 +13,7 @@ import { Dia } from './dia/entities/dia.entity';
 import { EjercicioModule } from './ejercicio/ejercicio.module';
 import { CircuitoModule } from './circuito/circuito.module';
 import { Circuito } from './circuito/entities/circuito.entity';
+import { Ejercicio } from './ejercicio/entities/ejercicio.entity';
 
 
 @Module({
@@ -30,7 +31,7 @@ import { Circuito } from './circuito/entities/circuito.entity';
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DATABASE,
       autoLoadEntities: true,
-      entities: [User, Plan, Dia, Circuito],
+      entities: [User, Plan, Dia, Circuito, Ejercicio],
       synchronize: true,
       ssl: { rejectUnauthorized: false },
 

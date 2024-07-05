@@ -4,18 +4,18 @@ import { UpdateEjercicioDto } from './dto/update-ejercicio.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Ejercicio } from './entities/ejercicio.entity';
 import { Repository } from 'typeorm';
+import { UserActiveInterface } from 'src/common/interfaces/user-active.interface';
 
 @Injectable()
 export class EjercicioService {
-
   constructor(
     @InjectRepository(Ejercicio)
-    private ejercicioRepository : Repository<Ejercicio>,
-  ){}
+    private ejercicioRepository: Repository<Ejercicio>,
+  ) {}
 
-
-  async create(createEjercicioDto: CreateEjercicioDto) {
-    return await this.ejercicioRepository.save(createEjercicioDto);
+  async create(createEjercicioDto: CreateEjercicioDto, user: UserActiveInterface) {
+    const newEjercicio = this.ejercicioRepository.create({ ...createEjercicioDto, userID: user.id });
+    return await this.ejercicioRepository.save(newEjercicio);
   }
 
   async findAll() {
