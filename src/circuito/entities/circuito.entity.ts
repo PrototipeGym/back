@@ -1,3 +1,5 @@
+
+
 import { Dia } from "src/dia/entities/dia.entity";
 import { Plan } from "src/plan/entities/plan.entity";
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";

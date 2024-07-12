@@ -14,7 +14,9 @@ export class EjercicioService {
   ) {}
 
   async create(createEjercicioDto: CreateEjercicioDto, user: UserActiveInterface) {
-    const newEjercicio = this.ejercicioRepository.create({ ...createEjercicioDto, userID: user.id });
+    const newEjercicio = this.ejercicioRepository.create({ ...createEjercicioDto, userID: user.id, 
+      role: user.role,
+     });
     return await this.ejercicioRepository.save(newEjercicio);
   }
 

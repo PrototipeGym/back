@@ -1,3 +1,4 @@
+
 import { Injectable } from '@nestjs/common';
 import { CreateCircuitoDto } from './dto/create-circuito.dto';
 import { UpdateCircuitoDto } from './dto/update-circuito.dto';
@@ -22,15 +23,15 @@ export class CircuitoService {
     return `This action returns all circuito`;
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return `This action returns a #${id} circuito`;
   }
 
-  update(id: number, updateCircuitoDto: UpdateCircuitoDto) {
+  update(id: string, updateCircuitoDto: UpdateCircuitoDto) {
     return `This action updates a #${id} circuito`;
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return `This action removes a #${id} circuito`;
   }
 }

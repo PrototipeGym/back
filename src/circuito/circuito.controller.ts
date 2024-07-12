@@ -22,16 +22,16 @@ export class CircuitoController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.circuitoService.findOne(+id);
+    return this.circuitoService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateCircuitoDto: UpdateCircuitoDto) {
-    return this.circuitoService.update(+id, updateCircuitoDto);
+    return this.circuitoService.update(id, updateCircuitoDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.circuitoService.remove(+id);
+    return this.circuitoService.remove(id);
   }
 }

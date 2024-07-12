@@ -1,3 +1,6 @@
+
+
+import { Role } from "src/common/enums/role.enum";
 import { User } from "src/users/entities/user.entity";
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { v4 as uuidv4 } from 'uuid';
@@ -21,5 +24,12 @@ export class Ejercicio {
     
     @Column()
     userID: string;
+
+   
+    @Column({
+        type: 'enum',
+        enum: Role,
+      })
+      role: Role;
 
 }
