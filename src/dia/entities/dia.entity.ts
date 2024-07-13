@@ -1,31 +1,24 @@
-import { Circuito } from "src/circuito/entities/circuito.entity";
-import { Plan } from "src/plan/entities/plan.entity";
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { PlanDia } from 'src/plan-dia/entities/plan-dia.entity';
+import { DiaCircuito } from 'src/dia-circuito/entities/dia-circuito.entity';
 import { v4 as uuidv4 } from 'uuid';
 
 @Entity()
 export class Dia {
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
-    @PrimaryGeneratedColumn('uuid')
-    id: string;
-    circuito: any;
+  constructor(){
+    this.id = uuidv4();
+  }
 
-    constructor(){
-        this.id = uuidv4();
-    }
+  @Column()
+  nombre : string;
 
-    @Column()
-    nombre : string
+  @OneToMany(() => PlanDia, planDia => planDia.dia)
+  planDias: PlanDia[];
 
-    
-    @ManyToOne(() => Plan, plan => plan.dias) 
-    plan: Plan;
-
-
-    @OneToMany(() => Circuito, circuito => circuito.dia, { eager: true })
-    circuitos: Circuito[];
-
-
+  @OneToMany(() => DiaCircuito, diaCircuito => diaCircuito.dia)
+  diaCircuitos: DiaCircuito[];
 }
-
 

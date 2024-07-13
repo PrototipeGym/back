@@ -1,3 +1,4 @@
+// plan.controller.ts
 import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
 import { PlanService } from './plan.service';
 import { CreatePlanDto } from './dto/create-plan.dto';
@@ -20,7 +21,7 @@ export class PlanController {
   @ApiResponse({ status: 400, description: 'Bad Request.' })
   @ApiBody({ type: CreatePlanDto })
   create(@Body() createPlanDto: CreatePlanDto, @ActiveUser() user: UserActiveInterface) {
-    return this.planService.create(createPlanDto, user);
+    return this.planService.create(createPlanDto);
   }
 
   @Get()

@@ -17,7 +17,7 @@ export class EjercicioController {
   @Post()
   @ApiBody({ type: CreateEjercicioDto })
   create(@Body() createEjercicioDto: CreateEjercicioDto, @ActiveUser() user: UserActiveInterface) {
-    return this.ejercicioService.create(createEjercicioDto, user);
+    return this.ejercicioService.create(createEjercicioDto);
   }
 
   @Get()

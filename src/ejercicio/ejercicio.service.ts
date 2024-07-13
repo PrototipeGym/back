@@ -13,11 +13,8 @@ export class EjercicioService {
     private ejercicioRepository: Repository<Ejercicio>,
   ) {}
 
-  async create(createEjercicioDto: CreateEjercicioDto, user: UserActiveInterface) {
-    const newEjercicio = this.ejercicioRepository.create({ ...createEjercicioDto, userID: user.id, 
-      role: user.role,
-     });
-    return await this.ejercicioRepository.save(newEjercicio);
+  async create(createEjercicioDto: CreateEjercicioDto) {
+    return await this.ejercicioRepository.save(createEjercicioDto);
   }
 
   async findAll() {
@@ -36,3 +33,4 @@ export class EjercicioService {
     return `This action removes a #${id} ejercicio`;
   }
 }
+

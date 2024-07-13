@@ -1,19 +1,16 @@
 import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { PlanService } from './plan.service';
 import { PlanController } from './plan.controller';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { Plan } from './entities/plan.entity';
+import { PlanDia } from 'src/plan-dia/entities/plan-dia.entity';
 import { Dia } from 'src/dia/entities/dia.entity';
-import { DiaModule } from 'src/dia/dia.module';
-import { CircuitoModule } from 'src/circuito/circuito.module';
+import { DiaCircuito } from 'src/dia-circuito/entities/dia-circuito.entity';
 import { Circuito } from 'src/circuito/entities/circuito.entity';
-
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([Plan, Dia, Circuito]),
-    DiaModule,
-    CircuitoModule,
+    TypeOrmModule.forFeature([Plan, PlanDia, Dia, DiaCircuito, Circuito]),
   ],
   controllers: [PlanController],
   providers: [PlanService],
