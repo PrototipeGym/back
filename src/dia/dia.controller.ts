@@ -4,7 +4,7 @@ import { CreateDiaDto } from './dto/create-dia.dto';
 import { UpdateDiaDto } from './dto/update-dia.dto';
 import { ApiBearerAuth, ApiBody, ApiTags } from '@nestjs/swagger';
 
-@ApiTags('dia')
+@ApiTags('Dia')
 @ApiBearerAuth()
 @Controller('dia')
 export class DiaController {
@@ -14,11 +14,6 @@ export class DiaController {
   @ApiBody({ type : CreateDiaDto})
   create(@Body() createDiaDto: CreateDiaDto) {
     return this.diaService.create(createDiaDto);
-  }
-
-  @Get()
-  findAll() {
-    return this.diaService.findAll();
   }
 
   @Get(':id')
