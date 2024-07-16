@@ -1,4 +1,4 @@
-// update-dia.dto.ts
+
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { IsOptional, IsString } from 'class-validator';
 

@@ -1,4 +1,4 @@
-// repeticion-accion.entity.ts
+
 import { Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Accion } from 'src/accion/entities/accion.entity';
 import { Repeticion } from 'src/repeticion/entities/repeticion.entity';

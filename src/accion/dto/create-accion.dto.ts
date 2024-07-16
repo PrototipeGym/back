@@ -1,4 +1,4 @@
-// create-accion.dto.ts
+
 import { ApiProperty } from "@nestjs/swagger";
 import { Transform } from "class-transformer";
 import { IsString, IsUUID } from "class-validator";

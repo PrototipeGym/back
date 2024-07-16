@@ -1,4 +1,4 @@
-// accion.entity.ts
+
 import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { v4 as uuidv4 } from 'uuid';
 import { Ejercicio } from "src/ejercicio/entities/ejercicio.entity";

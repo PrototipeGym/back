@@ -1,4 +1,3 @@
-// dia.service.ts
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateDiaDto } from './dto/create-dia.dto';
 import { UpdateDiaDto } from './dto/update-dia.dto';

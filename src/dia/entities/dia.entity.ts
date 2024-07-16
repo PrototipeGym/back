@@ -1,4 +1,3 @@
-// dia.entity.ts
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { DiaRepeticion } from 'src/dia-repeticion/entities/dia-repeticion.entity';
 import { v4 as uuidv4 } from 'uuid';
