@@ -16,6 +16,7 @@ import { AccionModule } from './accion/accion.module';
 import { RepeticionModule } from './repeticion/repeticion.module';
 import { Accion } from './accion/entities/accion.entity';
 import { Repeticion } from './repeticion/entities/repeticion.entity';
+import { RutinaModule } from './rutina/rutina.module';
 
 
 @Module({
@@ -57,6 +58,10 @@ import { Repeticion } from './repeticion/entities/repeticion.entity';
 
 
     RepeticionModule,
+
+
+
+    RutinaModule,
 
 
   ],
