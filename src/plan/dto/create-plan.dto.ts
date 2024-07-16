@@ -1,8 +1,8 @@
 
 import { ApiProperty } from "@nestjs/swagger";
-import { Transform, Type } from "class-transformer";
-import { IsArray, IsOptional, IsString, MaxLength, MinLength, ValidateNested } from "class-validator";
-import { CreateDiaDto } from "src/dia/dto/create-dia.dto";
+import { Transform } from "class-transformer";
+import { IsString, MaxLength, MinLength} from "class-validator";
+
 
 export class CreatePlanDto {
 
@@ -20,10 +20,5 @@ export class CreatePlanDto {
   @Transform(({value}) => value.trim())
   descripcion: string;
 
-  @ApiProperty({ type: [CreateDiaDto], required: false })
-  @IsArray()
-  @ValidateNested({ each: true })
-  @Type(() => CreateDiaDto)
-  @IsOptional()
-  dias?: CreateDiaDto[];
+
 }

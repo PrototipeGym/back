@@ -4,7 +4,7 @@ import { UpdateEjercicioDto } from './dto/update-ejercicio.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Ejercicio } from './entities/ejercicio.entity';
 import { Repository } from 'typeorm';
-import { UserActiveInterface } from 'src/common/interfaces/user-active.interface';
+
 
 @Injectable()
 export class EjercicioService {

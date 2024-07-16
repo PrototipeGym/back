@@ -1,9 +1,7 @@
-
-
-import { Role } from "src/common/enums/role.enum";
-import { User } from "src/users/entities/user.entity";
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+// ejercicio.entity.ts
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { v4 as uuidv4 } from 'uuid';
+import { Accion } from "src/accion/entities/accion.entity";
 
 @Entity()
 export class Ejercicio {
@@ -18,18 +16,31 @@ export class Ejercicio {
     @Column()
     nombre: string;
 
-    @ManyToOne(() => User)
-    @JoinColumn({name : 'userID', referencedColumnName: 'id',})
-    user : User;
-    
     @Column()
-    userID: string;
+    descripcion: string;
 
-   
-    @Column({
-        type: 'enum',
-        enum: Role,
-      })
-      role: Role;
-
+    @OneToMany(() => Accion, accion => accion.ejercicio)
+    acciones: Accion[];
 }
+
+
+// import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+// import { v4 as uuidv4 } from 'uuid';
+
+// @Entity()
+// export class Ejercicio {
+
+//     @PrimaryGeneratedColumn('uuid')
+//     id:string;
+
+//     constructor(){
+//         this.id = uuidv4()
+//     }
+
+//     @Column()
+//     nombre: string;
+
+//     @Column()
+//     descripcion: string;
+
+// }
