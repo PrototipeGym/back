@@ -1,8 +1,9 @@
 
 import { Plan } from 'src/plan/entities/plan.entity';
 import { Role } from '../../common/enums/role.enum';
-import { Entity, Column, PrimaryGeneratedColumn, ManyToMany } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, OneToMany } from 'typeorm';
 import { v4 as uuidv4 } from 'uuid';
+import { UserRutina } from 'src/user-rutina/entities/user-rutina.entity';
 
 @Entity()
 export class User {
@@ -48,7 +49,8 @@ export class User {
   @Column({ default: true })
   isActive: boolean;
 
-
+  @OneToMany(() => UserRutina, userRutina => userRutina.user)
+  userRutinas: UserRutina[];
 
 
 }

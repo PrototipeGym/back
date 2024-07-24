@@ -1,12 +1,14 @@
-// rutina.service.ts
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateRutinaDto } from './dto/create-rutina.dto';
 import { UpdateRutinaDto } from './dto/update-rutina.dto';
+import { CreateUserRutinaDto } from 'src/user-rutina/create-user-rutina.dto';
 import { Rutina } from './entities/rutina.entity';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DiaRutina } from 'src/dia-rutina/entities/dia-rutina.entity';
 import { Dia } from '../dia/entities/dia.entity';
+import { UserRutina } from 'src/user-rutina/entities/user-rutina.entity';
+import { User } from '../users/entities/user.entity';
 
 @Injectable()
 export class RutinaService {
@@ -19,6 +21,12 @@ export class RutinaService {
 
     @InjectRepository(DiaRutina)
     private diaRutinaRepository: Repository<DiaRutina>,
+
+    @InjectRepository(UserRutina)
+    private userRutinaRepository: Repository<UserRutina>,
+
+    @InjectRepository(User)
+    private userRepository: Repository<User>,
   ) {}
 
   async create(createRutinaDto: CreateRutinaDto) {
@@ -27,6 +35,16 @@ export class RutinaService {
 
   async findAll() {
     return await this.rutinaRepository.find({ relations: ['diaRutinas'] });
+  }
+
+  async findAllByUser(userId: string) {
+    const userRutinas = await this.userRutinaRepository.find({
+      where: { user: { id: userId } },
+      relations: ['rutina']
+    });
+
+    const rutinas = userRutinas.map(userRutina => userRutina.rutina);
+    return rutinas;
   }
 
   async findOne(id: string) {
@@ -73,4 +91,26 @@ export class RutinaService {
     }
     return result;
   }
+
+
+  async addUserToRutina(createUserRutinaDto: CreateUserRutinaDto) {
+    const { idRutina, idUser } = createUserRutinaDto;
+
+    const rutina = await this.rutinaRepository.findOne({ where: { id: idRutina } });
+    if (!rutina) {
+      throw new NotFoundException(`Rutina con id ${idRutina} no encontrada`);
+    }
+
+    const user = await this.userRepository.findOne({ where: { id: idUser } });
+    if (!user) {
+      throw new NotFoundException(`Usuario con id ${idUser} no encontrado`);
+    }
+
+    const userRutina = new UserRutina();
+    userRutina.rutina = rutina;
+    userRutina.user = user;
+
+    return await this.userRutinaRepository.save(userRutina);
+  }
 }
+

@@ -1,4 +1,5 @@
 import { DiaRutina } from "src/dia-rutina/entities/dia-rutina.entity";
+import { UserRutina } from "src/user-rutina/entities/user-rutina.entity";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { v4 as uuidv4 } from 'uuid';
 
@@ -18,5 +19,9 @@ export class Rutina {
 
     @OneToMany(() => DiaRutina, diaRutina => diaRutina.rutina)
     diaRutinas: DiaRutina[];
+
+
+    @OneToMany(() => UserRutina, userRutina => userRutina.rutina)
+    userRutinas: UserRutina[];
 
 }
