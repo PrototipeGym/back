@@ -11,7 +11,7 @@ export class DiaController {
   constructor(private readonly diaService: DiaService) {}
 
   @Post()
-  @ApiBody({ type : CreateDiaDto})
+  @ApiBody({ type: CreateDiaDto })
   create(@Body() createDiaDto: CreateDiaDto) {
     return this.diaService.create(createDiaDto);
   }
@@ -30,4 +30,10 @@ export class DiaController {
   remove(@Param('id') id: string) {
     return this.diaService.remove(id);
   }
+
+  @Get()
+  getAllDiasWithRepeticiones() {
+    return this.diaService.getAllDiasWithRepeticiones();
+  }
 }
+

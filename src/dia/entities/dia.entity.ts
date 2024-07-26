@@ -20,5 +20,4 @@ export class Dia {
 
   @OneToMany(() => DiaRutina, diaRutina => diaRutina.dia)
   diaRutinas: DiaRutina[];
-
 }

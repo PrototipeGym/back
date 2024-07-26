@@ -26,8 +26,15 @@ export class DiaService {
     return this.diaRepository.find();
   }
 
-  findOne(id: string) {
-    return this.diaRepository.findOne({ where: { id } });
+  async findOne(id: string) {
+    const dia = await this.diaRepository.findOne({
+      where: { id },
+      relations: ['diaRepeticiones', 'diaRepeticiones.repeticion'],
+    });
+    if (!dia) {
+      throw new NotFoundException(`Día con id ${id} no encontrado`);
+    }
+    return dia;
   }
 
   async update(id: string, updateDiaDto: UpdateDiaDto) {
@@ -73,5 +80,11 @@ export class DiaService {
       throw new NotFoundException(`Día con id ${id} no encontrado`);
     }
     return result;
+  }
+
+  async getAllDiasWithRepeticiones(): Promise<Dia[]> {
+    return this.diaRepository.find({
+      relations: ['diaRepeticiones', 'diaRepeticiones.repeticion'],
+    });
   }
 }

@@ -4,7 +4,7 @@ import { CreateRepeticionDto } from './dto/create-repeticion.dto';
 import { UpdateRepeticionDto } from './dto/update-repeticion.dto';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
-@ApiTags('repeticion')
+@ApiTags('Repeticion')
 @ApiBearerAuth()
 @Controller('repeticion')
 export class RepeticionController {
@@ -26,7 +26,7 @@ export class RepeticionController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateRepeticionDto: UpdateRepeticionDto) { 
+  update(@Param('id') id: string, @Body() updateRepeticionDto: UpdateRepeticionDto) {
     return this.repeticionService.update(id, updateRepeticionDto);
   }
 

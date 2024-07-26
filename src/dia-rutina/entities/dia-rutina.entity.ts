@@ -1,4 +1,3 @@
-// dia-rutina.entity.ts
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Dia } from 'src/dia/entities/dia.entity';
 import { Rutina } from '../../rutina/entities/rutina.entity';

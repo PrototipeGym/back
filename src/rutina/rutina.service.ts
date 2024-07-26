@@ -40,7 +40,7 @@ export class RutinaService {
   async findAllByUser(userId: string) {
     const userRutinas = await this.userRutinaRepository.find({
       where: { user: { id: userId } },
-      relations: ['rutina']
+      relations: ['rutina', 'rutina.diaRutinas']
     });
 
     const rutinas = userRutinas.map(userRutina => userRutina.rutina);
@@ -92,7 +92,6 @@ export class RutinaService {
     return result;
   }
 
-
   async addUserToRutina(createUserRutinaDto: CreateUserRutinaDto) {
     const { idRutina, idUser } = createUserRutinaDto;
 
@@ -113,4 +112,3 @@ export class RutinaService {
     return await this.userRutinaRepository.save(userRutina);
   }
 }
-

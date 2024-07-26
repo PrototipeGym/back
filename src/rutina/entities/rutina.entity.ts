@@ -17,7 +17,7 @@ export class Rutina {
     @Column()
     nombre : string;
 
-    @OneToMany(() => DiaRutina, diaRutina => diaRutina.rutina)
+    @OneToMany(() => DiaRutina, diaRutina => diaRutina.rutina, { eager: true })
     diaRutinas: DiaRutina[];
 
 
