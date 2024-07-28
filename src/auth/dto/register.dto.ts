@@ -1,7 +1,6 @@
 import { Transform } from "class-transformer";
 import { IsString, MaxLength, MinLength } from "class-validator";
-import { Plan } from "src/plan/entities/plan.entity";
-import { ManyToMany } from "typeorm";
+
 
 export class RegisterDto{
 
@@ -66,7 +65,5 @@ export class RegisterDto{
     @Transform(({value})=>value.trim())
     role : string;
 
-    // @ManyToMany(() => Plan, (plan) => plan.users)
-    // plans: Plan[];
 
 }

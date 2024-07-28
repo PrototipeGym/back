@@ -1,5 +1,4 @@
 
-import { Plan } from 'src/plan/entities/plan.entity';
 import { Role } from '../../common/enums/role.enum';
 import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, OneToMany } from 'typeorm';
 import { v4 as uuidv4 } from 'uuid';

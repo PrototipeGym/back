@@ -16,6 +16,15 @@ export class Rutina {
   
     @Column()
     nombre : string;
+  
+    @Column()
+    descripcion: string;
+  
+    @Column({ default: false })
+    status: boolean;
+  
+    @Column({ default: false })
+    blocked: boolean;
 
     @OneToMany(() => DiaRutina, diaRutina => diaRutina.rutina, { eager: true })
     diaRutinas: DiaRutina[];

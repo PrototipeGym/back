@@ -6,8 +6,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './users/entities/user.entity';
 import { ConfigModule } from "@nestjs/config";
 import { AuthModule } from './auth/auth.module';
-import { PlanModule } from './plan/plan.module';
-import { Plan } from './plan/entities/plan.entity';
 import { DiaModule } from './dia/dia.module';
 import { Dia } from './dia/entities/dia.entity';
 import { EjercicioModule } from './ejercicio/ejercicio.module';
@@ -34,7 +32,7 @@ import { RutinaModule } from './rutina/rutina.module';
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DATABASE,
       autoLoadEntities: true,
-      entities: [User, Plan, Dia, Ejercicio, Accion, Repeticion],
+      entities: [User, Dia, Ejercicio, Accion, Repeticion],
       synchronize: true,
       ssl: { rejectUnauthorized: false },
 
@@ -45,24 +43,15 @@ import { RutinaModule } from './rutina/rutina.module';
 
     AuthModule,
 
-    PlanModule,
-
     DiaModule,
 
     EjercicioModule,
 
-
-
     AccionModule,
-
-
 
     RepeticionModule,
 
-
-
     RutinaModule,
-
 
   ],
   controllers: [AppController],
