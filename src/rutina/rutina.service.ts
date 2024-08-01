@@ -47,6 +47,14 @@ export class RutinaService {
     return rutinas;
   }
 
+  async findAllByRutina(id: string) {
+    const rutina = await this.rutinaRepository.findOne({ where: { id }, relations: ['diaRutinas'] });
+    if (!rutina) {
+      throw new NotFoundException(`Rutina con id ${id} no encontrada`);
+    }
+    return rutina;
+  }
+
   async findOne(id: string) {
     return await this.rutinaRepository.findOne({ where: { id }, relations: ['diaRutinas'] });
   }
@@ -111,4 +119,7 @@ export class RutinaService {
 
     return await this.userRutinaRepository.save(userRutina);
   }
+
+
+
 }

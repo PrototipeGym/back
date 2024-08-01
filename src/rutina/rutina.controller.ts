@@ -31,6 +31,11 @@ export class RutinaController {
     return this.rutinaService.findAllByUser(user.id);
   }
 
+  @Get(':id')
+  findAllByRutina(@Param('id') id: string) {
+    return this.rutinaService.findAllByRutina(id);
+  }
+
   @Patch(':id')
   @ApiBody({ type: UpdateRutinaDto })
   update(@Param('id') id: string, @Body() updateRutinaDto: UpdateRutinaDto) {
