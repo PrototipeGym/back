@@ -53,5 +53,3 @@ export class RutinaController {
     return this.rutinaService.remove(id);
   }
 }
-
-

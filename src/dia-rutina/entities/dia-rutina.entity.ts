@@ -12,4 +12,7 @@ export class DiaRutina {
 
   @ManyToOne(() => Rutina, rutina => rutina.diaRutinas)
   rutina: Rutina;
+
+  
+
 }

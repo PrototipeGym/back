@@ -48,10 +48,18 @@ export class RutinaService {
   }
 
   async findAllByRutina(id: string) {
-    const rutina = await this.rutinaRepository.findOne({ where: { id }, relations: ['diaRutinas'] });
+    const rutina = await this.rutinaRepository.findOne({
+      where: { id },
+      relations: [
+        'diaRutinas',
+        'diaRutinas.dia', 
+      ],
+    });
+  
     if (!rutina) {
       throw new NotFoundException(`Rutina con id ${id} no encontrada`);
     }
+    
     return rutina;
   }
 
