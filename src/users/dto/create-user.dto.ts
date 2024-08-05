@@ -54,6 +54,13 @@ export class CreateUserDto {
     @MinLength(1)
     @MaxLength(8)
     @Transform(({value})=>value.trim())
+    genero : string;
+
+    @ApiProperty()
+    @IsString()
+    @MinLength(1)
+    @MaxLength(8)
+    @Transform(({value})=>value.trim())
     telefono : string;
 
     @ApiProperty()
@@ -70,6 +77,7 @@ export class CreateUserDto {
     @Transform(({value})=>value.trim())
     contrasena : string;
 
+    
     @ApiProperty()
     @IsString()
     @MinLength(1)
@@ -77,6 +85,12 @@ export class CreateUserDto {
     @Transform(({value})=>value.trim())
     role : string;
 
+    // @ApiProperty()
+    // @IsString()
+    // @MinLength(1)
+    // @MaxLength(50)
+    // @Transform(({value})=>value.trim())
+    // fecha_registro : string;
 
 }
 

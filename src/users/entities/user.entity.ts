@@ -33,6 +33,9 @@ export class User {
   altura: string;
 
   @Column()
+  genero: string;
+
+  @Column()
   telefono: string;
 
   @Column()
@@ -44,6 +47,8 @@ export class User {
   @Column({type:'enum', default: Role.USER, enum: Role})
   role: string;
   
+  // @Column()
+  // fecha_registro: string;
 
   @Column({ default: true })
   isActive: boolean;

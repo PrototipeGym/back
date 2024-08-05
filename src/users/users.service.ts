@@ -42,6 +42,7 @@ export class UsersService {
     user.dni=updateUserDto.dni;
     user.edad=updateUserDto.edad;
     user.peso=updateUserDto.peso;
+    user.genero=updateUserDto.genero;
     user.altura=updateUserDto.altura;
     user.telefono=updateUserDto.telefono;
     user.usuario=updateUserDto.usuario;

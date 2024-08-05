@@ -24,6 +24,7 @@ export class AuthService {
         edad,
         peso,
         altura,
+        genero,
         telefono,
         role
     }:RegisterDto){
@@ -43,6 +44,7 @@ export class AuthService {
             edad,
             peso,
             altura,
+            genero,
             telefono,
             role
         });

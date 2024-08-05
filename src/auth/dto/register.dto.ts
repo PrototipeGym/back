@@ -22,6 +22,11 @@ export class RegisterDto{
     @Transform(({value})=>value.trim())
     dni : string;
 
+    @IsString()
+    @MinLength(1)
+    @MaxLength(8)
+    @Transform(({value})=>value.trim())
+    genero : string;
 
     @IsString()
     @MinLength(1)
