@@ -26,7 +26,8 @@ export class AuthService {
         altura,
         genero,
         telefono,
-        role
+        role,
+        fecha_registro
     }:RegisterDto){
 
         const user = await this.usersService.findOneByUsername(usuario);
@@ -46,7 +47,8 @@ export class AuthService {
             altura,
             genero,
             telefono,
-            role
+            role,
+            fecha_registro
         });
 
         return {

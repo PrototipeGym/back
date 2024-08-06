@@ -70,5 +70,10 @@ export class RegisterDto{
     @Transform(({value})=>value.trim())
     role : string;
 
+    @IsString()
+    @MinLength(1)
+    @MaxLength(50)
+    @Transform(({value})=>value.trim())
+    fecha_registro : string;
 
 }

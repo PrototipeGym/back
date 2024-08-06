@@ -85,12 +85,12 @@ export class CreateUserDto {
     @Transform(({value})=>value.trim())
     role : string;
 
-    // @ApiProperty()
-    // @IsString()
-    // @MinLength(1)
-    // @MaxLength(50)
-    // @Transform(({value})=>value.trim())
-    // fecha_registro : string;
+    @ApiProperty()
+    @IsString()
+    @MinLength(1)
+    @MaxLength(50)
+    @Transform(({value})=>value.trim())
+    fecha_registro : string;
 
 }
 
