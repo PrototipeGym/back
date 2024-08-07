@@ -40,12 +40,18 @@ export class RutinaService {
   async findAllByUser(userId: string) {
     const userRutinas = await this.userRutinaRepository.find({
       where: { user: { id: userId } },
-      relations: ['rutina', 'rutina.diaRutinas']
+      relations: ['rutina', 'rutina.diaRutinas'],
+      order: {
+        rutina: {
+          nombre: 'ASC'
+        }
+      }
     });
-
+  
     const rutinas = userRutinas.map(userRutina => userRutina.rutina);
     return rutinas;
   }
+  
 
   async findAllByRutina(id: string) {
     const rutina = await this.rutinaRepository.findOne({

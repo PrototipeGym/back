@@ -23,8 +23,8 @@ export class UsersService {
   
 
 
-  async findOne(id: string): Promise<User | undefined> {
-    const users = await this.userRepository.find({ where: { id: id } });
+  async findOne(usuario: string): Promise<User | undefined> {
+    const users = await this.userRepository.find({ where: { usuario: usuario } });
     return users.length > 0 ? users[0] : undefined;
   }
 

@@ -12,15 +12,6 @@ import { Role } from 'src/common/enums/role.enum';
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  // @Post()
-  // @ApiOperation({ summary: 'Create a new User' })
-  // @ApiResponse({ status: 201, description: 'The User has been successfully created.' })
-  // @ApiResponse({ status: 400, description: 'Bad Request.' })
-  // @ApiBody({ type: CreateUserDto })
-  // create(@Body() createUserDto: CreateUserDto) {
-  //   return this.usersService.create(createUserDto);
-  // }
-
   @Get()
   @Auth(Role.USER)
   findAll() {
@@ -28,9 +19,9 @@ export class UsersController {
   }
 
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.usersService.findOne(id);
+  @Get(':usuario')
+  findOne(@Param('usuario') usuario: string) {
+    return this.usersService.findOne(usuario);
   }
   
   @Auth(Role.ADMIN)
